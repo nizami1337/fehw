@@ -1,122 +1,110 @@
-// 1
-let age = Number(prompt("Yas daxil edin: "))
-switch (true) {
-    case 0 < age && age < 12:
-        console.log("usaq")
-        break
-    case 12 <= age && age < 18:
-        console.log("yeniyetme")
-        break
-    case 18 <= age && age < 60:
-        console.log("boyuk")
-        break
-    case 60 <= age:
-        console.log("pensiyaci")
-        break
-}
-
-// 2
-let num = Number(prompt("Reqem daxil edin: "))
-switch (num) {
-    case 1:
-        console.log("!")
-        break
-    case 2:
-        console.log("@")
-        break
-    case 3:
-        console.log("#")
-        break
-    case 4:
-        console.log("$")
-        break
-    case 5:
-        console.log("%")
-        break
-    case 6:
-        console.log("^")
-        break
-    case 7:
-        console.log("&")
-        break
-    case 8:
-        console.log("*")
-        break
-    case 9:
-        console.log("(")
-        break
-    case 0:
-        console.log(")")
-        break
-}
-
-// 3
-let num3 = Number(prompt("Ucreqemli eded daxil edin: "))
-let yuzluk = parseInt(num3 / 100)
-let onluq = parseInt(num3 % 100 / 10)
-let teklik = num3 % 10
-if (yuzluk == onluq && onluq == teklik) {
-    console.log('Reqemler beraberdir')
-} else {
-    console.log("Reqemler beraber deyil")
-}
-
-// 4
-let year = Number(prompt("Il daxil edin: "))
-if (year % 4 == 0) {
-    console.log("Sicrayis ilidir")
-} else {
-    console.log("Sicrayis ili deyil")
-}
-
-// 5
-let diapazonStart = parseInt(prompt("Diapazon baslangic: "))
-let diapazonEnd = parseInt(prompt("Diapazon son: "))
-let sum = 0
-for (let i = diapazonStart; i<=diapazonEnd; i++) { // diapazonun [a,b] oldugunu ferz etsek
-    sum += i
-}
-console.log(sum)
-
-// 6
-let num6 = parseInt(prompt("Eded daxil edin: "))
-for (let i=1; i<=num6;i++) {
-    if (num6 % i == 0) {
-        console.log(i)
+//1
+let car = {
+    brand: "BMW",
+    model: "M8 Competition",
+    year: 2021,
+    color: "black",
+    status: false,
+    velocity: 0,
+    start() {
+        if (this.status) {
+            console.log("car already started");
+        } else {
+            this.status = true;
+            console.log("car started")
+        }
+    },
+    stop() {
+        if (!this.status) {
+            console.log("car already idle");
+        } else {
+            this.status = false;
+            console.log("car stopped")
+        }
+    },
+    accelerate(x) {
+        if (!this.status) {
+            console.log("start the car first")
+        } else {
+            this.velocity += x
+            console.log(`velocity increased by ${x}. current speed ${this.velocity}`)
+        }
+    },
+    decelerate(x) {
+        if (!this.status) {
+            console.log("start the car first")
+        } else {
+            this.velocity -= x
+            if (this.velocity < 0) this.velocity = 0
+            console.log(`velocity decreased by ${x}. current speed ${this.velocity}`)
+        }
     }
 }
 
-// 7
-let num7 = parseInt(prompt("Eded daxil edin: "))
-let reqemSayi = 0
-while (num7 > 1) {
-    reqemSayi++
-    num7 = num7 / 10
-}
-console.log(reqemSayi)
+// // 2
+// let user = {
+//     username: "cooluser829",
+//     email: "cooluser@example.com",
+//     password: "topsecretpassword123"
+// }
 
-// 8
-let nums = prompt('Bosluqla 10 eded daxil edin: ').split(' ')
-console.log(nums)
-let tekler = 0
-let cutler = 0
-let musbetler = 0
-let sifirlar = 0
-let menfiler = 0
-for (let i = 0; i < nums.length; i++) {
-    if (Number(nums[i]) % 2 == 0) {
-        cutler++
-    } else {
-        tekler++
-    }
+// user.bio = "hello world"
+// console.log(user)
+// Object.seal(user)
+// user.birthdate = 1999
+// console.log(user)
 
-    if (Number(nums[i]) > 0) {
-        musbetler++
-    } else if (Number(nums[i]) < 0) {
-        menfiler++
-    } else {
-        sifirlar++
-    }
-}
 
-document.getElementById('stats').innerHTML = `Tekler: ${tekler} | Cutler: ${cutler} | Musbetler: ${musbetler} | Menfiler: ${menfiler} | Sifirlar: ${sifirlar}`
+// // 3
+// let receipt = {
+//     name: "omelet",
+//     ingredients: ['eggs', 'butter'],
+//     instruction: "lorem ipsum dolor sit amet"
+// }
+
+// receipt.description = "hello world"
+// console.log(receipt)
+// console.log("extensible: ", Object.isExtensible(receipt))
+// Object.preventExtensions(receipt)
+// receipt.qwerty = "hi world"
+// console.log(receipt)
+// console.log("extensible: ", Object.isExtensible(receipt))
+
+// // 4
+// let order = {
+//     items: [{ itemId: 1, name: "T-shirt", quantity: 2, price: 20 }, { itemId: 2, name: "Jeans", quantity: 1, price: 50 }],
+//     shippingAddress: { street: "123 Main St", city: "Anytown", state: "CA", zip: "12345" },
+//     cart: [],
+//     addToCart(name, quantity) {
+//         // check = true
+//         // for (let i = 0; i<this.cart.length; i++) {
+//         //     console.log(this.cart)
+//         //     console.log(this.cart[i])
+//         //     if (this.cart[i].name == name) {
+//         //         this.cart[i].quantity = this.cart[i].quantity + quantity
+//         //         check = false
+//         //         console.log(item)
+//         //         break
+//         //     }
+//         // }
+//         // if (check) {
+//         //     console.log("check")
+//         //     for (let item in this.items) {
+//         //         item = this.items[item]
+//         //         if (item.name == name) {
+//         //             this.cart.push({itemId: item.itemId, quantity: quantity})
+//         //             break
+//         //         }
+//         //     }
+//         // }
+//         for (let item in this.items) {
+//             item = this.items[item]
+//             if (item.name == name) {
+//                 this.cart.push({itemId: item.itemId, quantity: quantity})
+//                 break
+//             }
+//         }
+//     }
+// }
+
+// // Object.seal(order)
